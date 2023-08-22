@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react'
-import { useLoaderData, Await } from 'react-router-dom'
+import { useLoaderData, Await, Link } from 'react-router-dom'
 import {GiFullPizza} from "react-icons/gi"
 import PageTitle from '../UI/PageTitle'
 import PagesLayout from '../UI/PagesLayout'
@@ -14,8 +14,10 @@ const Pizza = () => {
     
     return <CardsGrid>
      {pizzas.map(elem => (
-      <Card>
-        <img src={elem.image} alt='A pizza' className='cursor-pointer rounded-t-md max-h-[230.14px]'/>
+      <Card key={elem.id}>
+        <Link to={`${elem.id}`}>
+          <img src={elem.image} alt='A pizza' className='cursor-pointer rounded-t-md max-h-[230.14px]'/>
+        </Link>
         <div className='h-32 p-2 md:p-4'>
             <span className='block text-lg font-bold text-red-400 md:hidden'>{elem.price} PLN</span>
             <h1 className='font-bold text-[13px] md:text-lg'>{elem.name}</h1>

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, getDoc, doc } from "firebase/firestore"
 
 const firebaseConfig = {
     apiKey: "AIzaSyADZmVkLH14l5kU-bLRDwVc-anG5043hSI",
@@ -38,4 +38,15 @@ export async function getPizzas() {
     }
   })
   return dataArr
+}
+
+export async function getPizzainfo(id) {
+  const docRef = doc(pizzasCollectionRef, id)
+  const docSnap = await getDoc(docRef)
+  if (docSnap.exists()) {
+    return docSnap.data()
+  } else {
+    // docSnap.data() will be undefined in this case
+    return "No such document!"
+  }
 }
