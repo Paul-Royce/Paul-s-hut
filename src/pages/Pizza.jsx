@@ -16,7 +16,7 @@ const Pizza = () => {
      {pizzas.map(elem => (
       <Card key={elem.id}>
         <Link to={`${elem.id}`}>
-          <img src={elem.image} alt='A pizza' className='cursor-pointer rounded-t-md max-h-[230.14px]'/>
+          <img src={elem.image} alt='A pizza' className='cursor-pointer w-full rounded-t-md max-h-[163px] md:max-h-[230.14px]'/>
         </Link>
         <div className='h-32 p-2 md:p-4'>
             <span className='block text-lg font-bold text-red-400 md:hidden'>{elem.price} PLN</span>
@@ -26,10 +26,10 @@ const Pizza = () => {
             </p>   {/* para-trunc is to truncate text if it exceeds 3 lines, and is a custom CSS class */}
         </div>
         <hr className='md-mt-3' />
-          <button onClick={(e)=> console.log(e, "added to cart")} className='w-11/12 p-2 m-1 mx-auto text-base text-white rounded md:hidden bg-cartbtn'>Add to cart</button>
+          <button onClick={(e)=> console.log(e, "added to cart")} className='w-11/12 p-2 m-1 mx-auto text-base text-black duration-200 bg-yellow-500 rounded md:hidden hover:bg-yellow-600'>Add to cart</button>
           <div className='items-center justify-between hidden p-3 md:flex'>
             <span className='hidden w-full text-xl font-bold md:block'>{elem.price} PLN</span>
-            <button onClick={()=> console.log(elem.name + " added to cart")} className='w-full p-2 px-3 text-white rounded bg-cartbtn duration-150 hover:bg-[rgb(174, 234, 9)]'>Add...</button>
+            <button onClick={()=> console.log(elem.name + " added to cart")} className='w-full p-2 px-3 text-black duration-200 bg-yellow-500 rounded hover:bg-yellow-600'>Add...</button>
           </div>
       </Card>
      ))}
